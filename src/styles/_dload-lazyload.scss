@@ -1,17 +1,5 @@
-// Transition types
-$transition: cubic-bezier(0.165, 0.84, 0.44, 1) !default;
-$transform-value: 40px;
-
-// Transition speeds
-$s-fast: 125ms;
-$s-medium: 250ms;
-$s-slow: 600ms;
-
-// Delay arrays;
-$delays: 100 300 600 900;
-
 .reveal {
-  transition: .6s $transition;
+  transition: .6s $dload-transition;
   transition-property: opacity, transform;
 }
 
@@ -24,7 +12,7 @@ $delays: 100 300 600 900;
 }
 
 .reveal--up { 
-  transform: translateY($transform-value);
+  transform: translateY($dload-transform-value);
 
   &.lazy-loaded {
     transform: translateY(0);
@@ -32,7 +20,7 @@ $delays: 100 300 600 900;
 }
 
 .reveal--right { 
-  transform: translateX(-$transform-value);
+  transform: translateX(-$dload-transform-value);
 
   &.lazy-loaded {
     transform: translateX(0);
@@ -40,7 +28,7 @@ $delays: 100 300 600 900;
 }
 
 .reveal--left { 
-  transform: translateX($transform-value);
+  transform: translateX($dload-transform-value);
 
   &.lazy-loaded {
     transform: translateX(0);

@@ -35,7 +35,7 @@
   }
 }
 
-@each $val in $delays {
+@each $val in $dload-delays {
   .reveal--#{$val} {
     transition-delay: #{$val}ms;
   }

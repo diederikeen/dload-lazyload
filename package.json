@@ -1,6 +1,6 @@
 {
   "name": "dload-lazyload",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "New lazy-load plugin",
   "repository": {
     "type": "git",
@@ -8,7 +8,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "preinstall": "npm i",
+    "preinstall": "build",
     "build": "npm-run-all --parallel build:*",
     "build:styles": "node-sass -q src/assets/styles/*.scss -o dist/assets/css/ --output-style compressed",
     "build:scripts": "webpack --config prod.config.js",

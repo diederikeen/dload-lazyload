@@ -1,0 +1,42 @@
+.reveal {
+  transition: .6s $transition;
+  transition-property: opacity, transform;
+}
+
+.reveal--fade {
+  opacity: 0;
+
+  &.lazy-loaded {
+    opacity: 1;
+  }
+}
+
+.reveal--up { 
+  transform: translateY(40px);
+
+  &.lazy-loaded {
+    transform: translateY(0);
+  }
+}
+
+.reveal--right { 
+  transform: translateX(-40px);
+
+  &.lazy-loaded {
+    transform: translateX(0);
+  }
+}
+
+.reveal--left { 
+  transform: translateX(40px);
+
+  &.lazy-loaded {
+    transform: translateX(0);
+  }
+}
+
+@each $val in $delays {
+  .reveal--#{$val} {
+    transition-delay: #{$val}ms;
+  }
+}

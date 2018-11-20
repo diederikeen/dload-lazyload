@@ -38,7 +38,7 @@ For the basic setup you can use the following snippet
     <figure 
         class="lazy-load"
         data-srcset="
-          'base':'map/to/img/folder',
+          'base':'https://example.com/dir/to/img/folder/',
           'default':'img.jpg',        "
       >
 
@@ -49,13 +49,13 @@ In the following example you can see all of the possible `options`.
     <figure
         class="lazy-load"
         data-srcset="
-          'base':'https://superinteractive.com/assets/img/',
-          'default':'cases/makelaarsland/1.jpg',
-          'defaultRetina': 'cases/makelaarsland/2.jpg',
-          'mobile':'cases/makelaarsland/3.jpg.jpg',
-          'mobileRetina':'cases/makelaarsland/4.jpg',
-          'tablet':'cases/makelaarsland/5.jpg',
-          'tabletRetina':'cases/makelaarsland/6.jpg'
+          'base':'https://example.com/dir/to/img/folder/',
+          'default':'image1.jpg',
+          'defaultRetina': 'image1@retina.jpg',
+          'mobile':'image2.jpg',
+          'mobileRetina':'image2@retina.jpg',
+          'tablet':'image3.jpg',
+          'tabletRetina':'image3@retina.jpg'
         "
       >
 
@@ -71,8 +71,8 @@ For transition classes I've decided to go with `reveal`.
     <figure 
       class="lazy-load reveal reveal--up"
       data-srcset="
-        'base':'https://superinteractive.com/assets/img/',
-        'default':'cases/makelaarsland/1.jpg'
+        'base':'https://example.com/dir/to/img/folder/',
+        'default':'image1.jpg'
       "
     >
 
@@ -102,8 +102,8 @@ If you want delays on your animations you can either set a class like `reveal--5
     <figure 
       class="lazy-load reveal reveal--up reveal--600"
       data-srcset="
-        'base':'https://superinteractive.com/assets/img/',
-        'default':'cases/makelaarsland/1.jpg'
+        'base':'https://example.com/dir/to/img/folder/',
+        'default':'image1.jpg'
       "
     >
 
@@ -115,7 +115,7 @@ If you want a random delay you can add the class `reveal--random` and a random v
     <figure 
       class="lazy-load reveal reveal--up reveal--random"
       data-srcset="
-        'base':'https://superinteractive.com/assets/img/',
-        'default':'cases/makelaarsland/1.jpg'
+        'base':'https://example.com/dir/to/img/folder/',
+        'default':'image1.jpg'
       "
     >

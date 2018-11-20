@@ -1,5 +1,5 @@
 .reveal {
-  transition: .6s $dload-transition;
+  transition: $dload-transition-speed $dload-transition;
   transition-property: opacity, transform;
 }
 

@@ -1,5 +1,6 @@
 // Transition types
 $dload-transition: cubic-bezier(0.165, 0.84, 0.44, 1) !default;
+$dload-transition-speed: 600ms;
 $dload-transform-value: 40px;
 // Delay arrays;
 $dload-delays: 100 300 600 900;

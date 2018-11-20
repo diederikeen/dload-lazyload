@@ -1,6 +1,6 @@
 {
   "name": "dload-lazyload",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "description": "New lazy-load plugin",
   "repository": {
     "type": "git",

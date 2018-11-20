@@ -1,7 +1,8 @@
 {
   "name": "dload-lazyload",
-  "version": "1.0.10",
+  "version": "1.1.2",
   "description": "New lazy-load plugin",
+  "keywords": ["lazy-load", "npm", "reveal", "animation", "performance"],
   "repository": {
     "type": "git",
     "url": "https://github.com/diederikeen/dload-lazyload"
@@ -24,8 +25,5 @@
     "throttle-debounce": "^2.0.1",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0"
-  },
-  "dependencies": {
-    "uglifyjs-webpack-plugin": "^2.0.1"
   }
 }

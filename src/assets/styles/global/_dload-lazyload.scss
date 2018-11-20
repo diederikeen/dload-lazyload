@@ -12,7 +12,7 @@
 }
 
 .reveal--up { 
-  transform: translateY(40px);
+  transform: translateY($transform-value);
 
   &.lazy-loaded {
     transform: translateY(0);
@@ -20,7 +20,7 @@
 }
 
 .reveal--right { 
-  transform: translateX(-40px);
+  transform: translateX(-$transform-value);
 
   &.lazy-loaded {
     transform: translateX(0);
@@ -28,7 +28,7 @@
 }
 
 .reveal--left { 
-  transform: translateX(40px);
+  transform: translateX($transform-value);
 
   &.lazy-loaded {
     transform: translateX(0);

@@ -1,1 +1,3 @@
-import initDLoad from './partials/d-load';
+import dload from './partials/d-load';
+
+module.exports = dload;

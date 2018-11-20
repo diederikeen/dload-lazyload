@@ -1,15 +1,11 @@
-import { randomBytes } from "crypto";
-
 'use strict';
 export default class createImageObject{
 
-  
   /**
    * 
    * @param {Element to be animated} el 
    * @param {ClassName to be added once loaded} className 
    */
-
 
   constructor(el, className) {
     this.className = className;
@@ -21,8 +17,6 @@ export default class createImageObject{
     this.type = el.tagName;
     this.source = this.setSource();
 
-    // return;
-    
     /**
      * Throw error if image cannot be loaded due a undefined image url;
      */

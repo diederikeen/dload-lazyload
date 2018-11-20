@@ -2,7 +2,7 @@
 import createImageObject from './createImageObject';
 import { throttle } from 'throttle-debounce';
 
-const initDLoad = parameters => {
+const dload = parameters => {
   const options = parameters;
 
   /**
@@ -87,4 +87,4 @@ const removeItemFromArray = (el, elements) => {
   return elements;
 }
 
-export default initDLoad;
+export default dload;

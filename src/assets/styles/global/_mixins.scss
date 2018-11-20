@@ -1,0 +1,12 @@
+/*
+  * Define your mixins in here
+*/
+
+
+// Breakpoints include as: 
+// @include breakpoint($bp-tablet){ //content };
+@mixin breakpoint($width){
+  @media screen and (min-width: $width * 1px) {
+    @content;
+  };
+}

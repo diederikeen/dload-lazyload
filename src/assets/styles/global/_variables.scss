@@ -1,0 +1,24 @@
+/*
+  * Define your variables here
+*/
+
+$black: #333;
+$white: #fff;
+
+// Breakpoints used for breakpoint mixin
+$bp-mobile: 480;
+$bp-tablet: 768;
+$bp-laptop: 970;
+$bp-desktop: 1280;
+$bp-desktop-large: 1366;
+$bp-desktop-xlarge: 1420;
+
+// Transition types
+$cubic: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+// Transition speeds
+$s-fast: 125ms;
+$s-medium: 250ms;
+$s-slow: 500ms;
+
+$f-body: 'Heebo-Light';

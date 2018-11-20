@@ -1,0 +1,9 @@
+{
+  "dest": "./dist/assets/sprite/",
+  "mode": {
+    "inline": true,
+    "symbol": {
+      "dest": "../"
+    }
+  }
+}

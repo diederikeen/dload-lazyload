@@ -1,0 +1,25 @@
+/*
+  * Vendor styles
+*/
+@import './vendor/normalize';
+
+/*
+  * Global styles
+*/
+@import './global/fonts';
+@import './global/variables';
+@import './global/mixins';
+@import './global/global';
+
+/*
+  * Elements styles
+*/
+
+/*
+  * Module styles
+*/
+@import './modules/test-module';
+
+/*
+  * State styles
+*/

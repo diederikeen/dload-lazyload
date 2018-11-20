@@ -1,3 +1,15 @@
+// Transition types
+$transition: cubic-bezier(0.165, 0.84, 0.44, 1) !default;
+$transform-value: 40px;
+
+// Transition speeds
+$s-fast: 125ms;
+$s-medium: 250ms;
+$s-slow: 600ms;
+
+// Delay arrays;
+$delays: 100 300 600 900;
+
 .reveal {
   transition: .6s $transition;
   transition-property: opacity, transform;

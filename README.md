@@ -1,4 +1,3 @@
-----
 # Dload-lazy-load
 
 Dload is a lazy-load plugin for elements and images. It's easily adjustable and easy in use
@@ -84,7 +83,7 @@ There are multiple pre made classes for you to use and change.
 * `reveal--right` (transforms left to right)
 
 
-There are some classes also that you're able to change: Simply reset the variable to your liking.
+There are some variables that you're able to change: Simply reset the variable to your liking.
 
 * `$dload-transition: cubic-bezier(0.165, 0.84, 0.44, 1) !default`;
 * `$dload-transition-speed: 600ms !default;`

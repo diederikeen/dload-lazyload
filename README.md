@@ -1,4 +1,4 @@
-# Temporary disabled due errors in npm-run-all
+# Temporary disabled due vulnerability in npm-run-all
 
 
 # Dload-lazy-load

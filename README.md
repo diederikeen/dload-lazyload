@@ -1,3 +1,6 @@
+# Temporary disabled due errors in npm-run-all
+
+
 # Dload-lazy-load
 
 Dload is a lazy-load plugin for elements and images. It's easily adjustable and easy in use

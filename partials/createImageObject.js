@@ -78,7 +78,8 @@ export default class createImageObject{
   }
 
   setSource() {
-    const srcObject = eval(`({${this.item.dataset.srcset}})`);
+    const { srcset } = this.item.dataset;
+    const srcObject = eval(`(${srcset})`);
     let base = srcObject.base;
     let dadum;
     

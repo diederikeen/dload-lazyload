@@ -37,8 +37,10 @@ For the basic setup you can use the following snippet
     <figure 
         class="lazy-load"
         data-srcset="
-          'base':'https://example.com/dir/to/img/folder/',
-          'default':'img.jpg',        "
+          {
+            'base':'https://example.com/dir/to/img/folder/',
+            'default':'img.jpg',
+          }"
       >
 
 But there are some other images avaiable to. For optimal performance for mobile/tablet we've added a couple more sources, which you can devide by a `,`.

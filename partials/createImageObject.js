@@ -58,7 +58,6 @@ export default class createImageObject{
   createImage() {
     this.image = new Image();
     this.image.src = this.source;
-    console.log(this.source);
     this.image.onload = () => {
 
       if (this.type === 'IMG') {

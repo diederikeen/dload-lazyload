@@ -1,11 +1,12 @@
 const path = require('path');
 
 module.exports = {
-  mode: 'development',
+  mode: 'develop',
   watch: true,
   entry: './src/assets/js/index.js',
+  devtool: 'source-map',
   output: {
-    path: path.resolve(__dirname, 'dist/assets/js'),
-    filename: 'app.js'
+    path: path.resolve(__dirname),
+    filename: './index.js'
   }
 }

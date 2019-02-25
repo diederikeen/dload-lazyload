@@ -15,15 +15,6 @@ export default class createImageObject{
     this.retina = this.isRetina();
     this.delay = this.setDelay();
     this.type = el.tagName;
-    this.source = this.setSource();
-
-    /**
-     * Throw error if image cannot be loaded due a undefined image url;
-     */
-
-    if (this.type === 'IMG' && this.source === undefined || this.type === 'FIGURE' && this.source === undefined) {
-      throw Error ("Couldn't load image source. Please check again");
-    }
     
     /**
      * If type not equals an image tag or figure tag, we just add the class 
@@ -34,14 +25,24 @@ export default class createImageObject{
       setTimeout( () => {
         this.item.classList.add(this.className);
       }, this.delay);
-      return ;
+      
+      return false;
     }
 
     /**
      * If everthing passed, create new image Instance;
      */
-    
+    this.source = this.setSource();
+
+    /**
+     * Throw error if image cannot be loaded due a undefined image url;
+     */
+    if (this.type === 'IMG' && this.source === undefined || this.type === 'FIGURE' && this.source === undefined) {
+      throw Error ("Couldn't load image source. Please check again");
+    }
+
     this.createImage();
+
   };
 
   setDelay() {
@@ -72,7 +73,8 @@ export default class createImageObject{
     };
 
     this.image.onerror = (error) => {
-      throw Error("Couldn't find image");
+      this.item.classList.add(this.className);
+      throw Error(error);
     }
   }
 
@@ -83,10 +85,9 @@ export default class createImageObject{
     let dadum;
     
     let sources = ['default', 'mobile', 'tablet'];
-
+    
     sources.map(source => {
-      if( this.retina ) {
-      
+      if( this.retina ) {  
         if (this.mobile) {
           dadum = srcObject.mobileRetina || srcObject.tablet
         }
@@ -96,6 +97,14 @@ export default class createImageObject{
         }
 
         dadum = srcObject.defaultRetina;
+
+        if (!dadum) {
+          dadum = srcObject.defaultRetina;
+        }
+
+        if (!dadum) {
+          dadum = srcObject.default;
+        }
 
         return source;
       }

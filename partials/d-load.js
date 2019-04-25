@@ -3,21 +3,18 @@ import createImageObject from './createImageObject';
 import { throttle } from 'throttle-debounce';
 
 const dload = parameters => {
-  const options = parameters;
-
   /**
    * Set default classes if none is given in the parameters;
   */
 
-  setDefaultOptions(parameters, options);
-  
+  const options = setDefaultOptions(parameters);
   const lazyElements = Array.prototype.slice.call(document.getElementsByClassName(options.className));
 
   /**
    * Throw error if there no elements, but classname exits;
    */
-  if (!lazyElements.length) { throw 'No elements are found'; };
-  setImageSources(lazyElements, options.loadedClass);
+  if (!lazyElements.length) { return; };
+  setImageSources(lazyElements, options.loadedClass, options.singleSource);
   
   /**
    * Check if there still images after init
@@ -26,25 +23,45 @@ const dload = parameters => {
   if (!lazyElements.length) { return false; };
 
   window.addEventListener('scroll', throttle(50, () => {
-    setImageSources(lazyElements, options.loadedClass);
+    setImageSources(lazyElements, options.loadedClass, options.singleSource);
   }));
   
   window.addEventListener('touchmove', throttle(50, () => {
-    setImageSources(lazyElements, options.loadedClass);
+    setImageSources(lazyElements, options.loadedClass, options.singleSource);
   }));
 };
 
 /**
  * Set Default options
  */
-const setDefaultOptions = (parameters, options) => {
+const setDefaultOptions = (parameters) => {
+  const options = {};
   
+
+  if (!parameters) {
+    return {
+      className: "lazy-load",
+      loadedClass: "lazy-loaded",
+      singleSource: false,
+    }
+  };
+
   if (!parameters['className']) { 
-    options.className="lazy-load";
+    options.className = "lazy-load";
+  } else {
+    options.className = parameters.className;
   }
 
   if (!parameters['loadedClass']) {
     options.loadedClass="lazy-loaded";
+  } else {
+    options.loadedClass = parameters.loadedClass;
+  }
+
+  if (!parameters['singleSource']) {
+    options.singleSource = false;
+  } else {
+    options.singleSource = parameters.singleSource;
   }
 
   if (!options.loadedClass || !options.className) {
@@ -68,11 +85,11 @@ const isElementInView = (el) => {
 /**
  * Create image instance
  */
-const setImageSources = (elements, className) => {
+const setImageSources = (elements, className, singleSource) => {
   for (let i = elements.length -1; i >= 0; i--) {
     const el = elements[i];
     if(isElementInView(el)) {
-      new createImageObject(el, className);
+      new createImageObject(el, className, singleSource);
       removeItemFromArray(el, elements);
     }
   }

@@ -7,7 +7,7 @@ Dload is a lazy-load plugin for elements and images. It's easily adjustable and 
     npm i dload-lazyload
 
 ### In your js.
-    @import dload from 'dload-lazyload';
+    import dload from 'dload-lazyload';
     
     document.addEventListener('DOMContentLoaded', () => {
       dload();
@@ -15,15 +15,23 @@ Dload is a lazy-load plugin for elements and images. It's easily adjustable and 
 
 Or with custom settings
 
-    @import dload from 'dload-lazyload';
+    import dload from 'dload-lazyload';
     
     document.addEventListener('DOMContentLoaded', () => {
       dload({
         className: 'your-custom-class',
-        loadedClass: 'classname-when-in-view'
+        loadedClass: 'classname-when-in-view',
+        singleSource: true,
       });
     });
     
+### Custom options
+| Option        | Description   | Default Value |  Custom value type |
+| ------------- |:-------------| -------------- | ------------- | 
+| className     | Class name of elements that will be  lazy loaded | lazy-load | `string` |
+| loadedClass   | Class name that will be added once in viewport |  lazy-loaded | `string` |
+| singleSource  | Boolean to define a single source instead of multi sources | false | `bool` |
+
 
 ### In your scss.
 
@@ -32,15 +40,15 @@ Or with custom settings
 
 
 ### Your HTML markup
-For the basic setup you can use the following snippet
+
+#### Basic multisource markup
 
     <figure 
         class="lazy-load"
-        data-srcset="
-          {
-            'base':'https://example.com/dir/to/img/folder/',
-            'default':'img.jpg',
-          }"
+        data-srcset='{
+            "default":"./assets/img/img.jpg",
+            "defaultRetina": "./assets/img/imgRetina.jpg",
+          }'
       >
 
 But there are some other images avaiable to. For optimal performance for mobile/tablet we've added a couple more sources, which you can devide by a `,`.
@@ -49,15 +57,22 @@ In the following example you can see all of the possible `options`.
 
     <figure
         class="lazy-load"
-        data-srcset="
-          'base':'https://example.com/dir/to/img/folder/',
-          'default':'image1.jpg',
-          'defaultRetina': 'image1@retina.jpg',
-          'mobile':'image2.jpg',
-          'mobileRetina':'image2@retina.jpg',
-          'tablet':'image3.jpg',
-          'tabletRetina':'image3@retina.jpg'
-        "
+        data-srcset='{
+          "base": "https://example.com/dir/to/img/folder/",
+          "default": "image1.jpg",
+          "defaultRetina": "image1@retina.jpg",
+          "mobile": "image2.jpg",
+          "mobileRetina": "image2@retina.jpg",
+          "tablet": "image3.jpg",
+          "tabletRetina": "image3@retina.jpg"
+        }'
+      >
+
+#### Basic singleSource markup
+
+    <figure 
+        class="lazy-load"
+        data-srcset='./assets/img/img.jpg'
       >
 
 And now you're ready to go.
@@ -71,10 +86,10 @@ For transition classes I've decided to go with `reveal`.
 
     <figure 
       class="lazy-load reveal reveal--up"
-      data-srcset="
-        'base':'https://example.com/dir/to/img/folder/',
-        'default':'image1.jpg'
-      "
+      data-srcset='{
+        "default":"./assets/img/img.jpg",
+        "defaultRetina": "./assets/img/imgRetina.jpg",
+      }'
     >
 
 There are multiple pre made classes for you to use and change.
@@ -102,21 +117,20 @@ If you want delays on your animations you can either set a class like `reveal--5
 
     <figure 
       class="lazy-load reveal reveal--up reveal--600"
-      data-srcset="
-        'base':'https://example.com/dir/to/img/folder/',
-        'default':'image1.jpg'
-      "
+      data-srcset='{
+        "default":"./assets/img/img.jpg",
+        "defaultRetina": "./assets/img/imgRetina.jpg",
+      }'
     >
 
 If you want a random delay you can add the class `reveal--random` and a random valye between 0 and 500ms will be set on the element
-
 
 #### Example:
 
     <figure 
       class="lazy-load reveal reveal--up reveal--random"
-      data-srcset="
-        'base':'https://example.com/dir/to/img/folder/',
-        'default':'image1.jpg'
-      "
+      data-srcset='{
+        "default":"./assets/img/img.jpg",
+        "defaultRetina": "./assets/img/imgRetina.jpg",
+      }'
     >

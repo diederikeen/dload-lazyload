@@ -7,14 +7,16 @@ export default class createImageObject{
    * @param {ClassName to be added once loaded} className 
    */
 
-  constructor(el, className) {
+  constructor(el, className, singleSource) {
     this.className = className;
     this.item = el;
+    this.isSingleSource = singleSource;
     this.mobile = this.isMobile();
     this.tablet = this.isTablet();
     this.retina = this.isRetina();
     this.delay = this.setDelay();
     this.type = el.tagName;
+
     
     /**
      * If type not equals an image tag or figure tag, we just add the class 
@@ -33,12 +35,12 @@ export default class createImageObject{
      * If everthing passed, create new image Instance;
      */
     this.source = this.setSource();
-
+    
     /**
      * Throw error if image cannot be loaded due a undefined image url;
      */
     if (this.type === 'IMG' && this.source === undefined || this.type === 'FIGURE' && this.source === undefined) {
-      throw Error ("Couldn't load image source. Please check again");
+      throw Error ("Couldn't load image source. Please check source");
     }
 
     this.createImage();
@@ -46,14 +48,10 @@ export default class createImageObject{
   };
 
   setDelay() {
-
-    if (this.item.classList.contains('reveal--random')) {
-      const rand = Math.floor(Math.random() * 500) + 100;
-      
-      return rand;
-    };
-
-    return 0;
+    if (! this.item.classList.contains('reveal--random')) return 0;
+    
+    const rand = Math.floor(Math.random() * 700) + 100;
+    return rand;
   }
 
   createImage() {
@@ -66,6 +64,7 @@ export default class createImageObject{
       } else {
         this.item.style.backgroundImage = `url(${this.source})`;
       }
+
       setTimeout( () => {
         this.item.classList.add(this.className);
       }, this.delay);
@@ -74,56 +73,46 @@ export default class createImageObject{
 
     this.image.onerror = (error) => {
       this.item.classList.add(this.className);
-      throw Error(error);
+      console.error(error);
     }
   }
 
   setSource() {
     const { srcset } = this.item.dataset;
-    const srcObject = eval(`(${srcset})`);
-    let base = srcObject.base;
-    let dadum;
-    
-    let sources = ['default', 'mobile', 'tablet'];
+    if (this.isSingleSource) return this.setSingleSource(srcset)
+    else return this.setMultipleSources(srcset);
+  }
+
+  setSingleSource(src) {
+    return src;
+  }
+
+  setMultipleSources(src) {
+    const object = JSON.parse(src);
+    const sources = ['default', 'tablet', 'mobile'];
+    let srcString;
     
     sources.map(source => {
-      if( this.retina ) {  
-        if (this.mobile) {
-          dadum = srcObject.mobileRetina || srcObject.tablet
+
+      if (this.retina) {
+        if (this[source]) {
+          srcString = object[`${source}Retina`] || object[source];
+          if (!srcString) srcString = object['defaultRetina'] || object['default'];
+          return srcString;
+        } else if (!srcString) {
+          srcString = object[`defaultRetina`] || object['default'];
+          return srcString;
         }
-
-        if (this.tablet) {
-          dadum = srcObject.tabletRetina || srcObject.default
+      } else {
+        if (this[source]) {
+          srcString = object[source] || object['default'];
+        } else {
+          srcString = object['default'];
         }
-
-        dadum = srcObject.defaultRetina;
-
-        if (!dadum) {
-          dadum = srcObject.defaultRetina;
-        }
-
-        if (!dadum) {
-          dadum = srcObject.default;
-        }
-
-        return source;
       }
+    });
 
-      if (this.mobile) {
-        dadum = srcObject.mobile || srcObject.tablet
-      }
-
-      if (this.tablet) {
-        dadum = srcObject.tablet || srcObject.default
-      }
-
-      dadum = srcObject.default;
-
-      return dadum;
-
-    }, this);
-
-    return base+dadum;
+    return srcString;
   }
 
   isMobile() {

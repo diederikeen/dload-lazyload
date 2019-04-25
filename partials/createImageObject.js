@@ -73,7 +73,7 @@ export default class createImageObject{
 
     this.image.onerror = (error) => {
       this.item.classList.add(this.className);
-      console.error(error);
+      // console.error(error);
     }
   }
 
